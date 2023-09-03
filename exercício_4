@@ -2,9 +2,9 @@
 
 2-	 Sim, “quantReservas” não está sendo inicializado com um valor.
 
-3-	class Hotel {
-  quantReservas: number;
-  constructor(quantReservasInicial: number) {
+3-class Hotel {
+   quantReservas: number;
+   constructor(quantReservasInicial: number) {
      this.quantReservas = quantReservasInicial;
   }
 
