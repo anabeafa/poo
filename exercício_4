@@ -26,9 +26,9 @@ console.log(c3.consultarSaldo()); imprimirá o saldo de c3, que também é 40, p
 
 b) O objeto para o qual a referência c1 apontava originalmente (uma instância da classe Conta com número "1" e saldo inicial de 100) não tem mais nenhuma referência apontando para ele após a linha c1 = c2.
 
-6-	class Saudacao {
-  texto: string;
-  destinatario: string;
+6-class Saudacao {
+    texto: string;
+    destinatario: string;
 
   constructor(texto: string, destinatario: string) {
     this.texto = texto;
