@@ -1,1 +1,44 @@
+1-	V - F - V - F - V - V - V
+
+2-	 Sim, “quantReservas” não está sendo inicializado com um valor.
+
+3-	class Hotel {
+  quantReservas: number;
+  constructor(quantReservasInicial: number) {
+     this.quantReservas = quantReservasInicial;
+  }
+
+  adicionarReserva(): void {
+     this.quantReservas++;
+  }
+}
+let hotel: Hotel = new Hotel(2);
+console.log(hotel.quantReservas);
+
+4-	O erro de compilação ocorre devido à tentativa de criar uma instância da classe Radio sem fornecer um valor para o parâmetro volume no construtor. Para corrigir o erro:
+let r: Radio = new Radio(10);
+
+5-	a)
+O resultado dos dois "prints" será:
+console.log(c1.consultarSaldo()); imprimirá o saldo de c1, que é 40.
+console.log(c2.consultarSaldo()); imprimirá o saldo de c2, que é 150.
+console.log(c3.consultarSaldo()); imprimirá o saldo de c3, que também é 40, pois c3 aponta para o mesmo objeto que c1.
+
+b) O objeto para o qual a referência c1 apontava originalmente (uma instância da classe Conta com número "1" e saldo inicial de 100) não tem mais nenhuma referência apontando para ele após a linha c1 = c2;
+
+6-	class Saudacao {
+  texto: string;
+  destinatario: string;
+
+  constructor(texto: string, destinatario: string) {
+    this.texto = texto;
+    this.destinatario = destinatario;
+  }
+
+  obterSaudacao(): string {
+    return `${this.texto}, ${this.destinatario}`;
+  }
+}
+const saudacao = new Saudacao("Bom dia", "João");
+console.log(saudacao.obterSaudacao()); 
 
