@@ -1,6 +1,6 @@
-1-	V - F - V - F - V - V - V
+1-V - F - V - F - V - V - V
 
-2-	 Sim, “quantReservas” não está sendo inicializado com um valor.
+2-Sim, “quantReservas” não está sendo inicializado com um valor.
 
 3-class Hotel {
    quantReservas: number;
