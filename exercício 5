@@ -1,0 +1,181 @@
+questão 1)
+
+class Banco {
+    contas: Conta[] = [];
+
+    inserir(conta: Conta): void {
+        if (!this.contas.some(c => c.numero === conta.numero)) {
+            this.contas.push(conta);
+        } else {
+            console.log(`Já existe uma conta com o número ${conta.numero}`);
+        }
+    }
+
+    consultar(numero: string): Conta | null {
+        return this.contas.find(c => c.numero === numero) || null;
+    }
+
+    sacar(numero: string, valor: number): void {
+        const conta = this.consultar(numero);
+        if (conta) {
+            conta.sacar(valor);
+        }
+    }
+
+    transferir(numeroCredito: string, numeroDebito: string, valor: number): void {
+        const contaCredito = this.consultar(numeroCredito);
+        const contaDebito = this.consultar(numeroDebito);
+
+        if (contaCredito && contaDebito) {
+            contaCredito.transferir(contaDebito, valor);
+        }
+    }
+
+    quantidadeDeContas(): number {
+        return this.contas.length;
+    }
+
+    totalDinheiroDepositado(): number {
+        return this.contas.reduce((total, conta) => total + conta.saldo, 0);
+    }
+
+    mediaSaldoDasContas(): number {
+        const numContas = this.contas.length;
+        if (numContas === 0) {
+            return 0;
+        }
+
+        return this.totalDinheiroDepositado() / numContas;
+    }
+}
+questão 2) A)
+
+class Postagem {
+    constructor(public id: number, public texto: string, public quantidadeCurtidas: number = 0) {}
+
+    curtir(): void {
+        this.quantidadeCurtidas++;
+    }
+
+    toString(): string {
+        return `${this.texto} - ${this.quantidadeCurtidas} curtidas`;
+    }
+}
+
+const minhaPostagem = new Postagem(1, "postagem");
+minhaPostagem.curtir();
+minhaPostagem.curtir();
+
+console.log(minhaPostagem.toString());
+
+questão 2) B)
+
+class Microblog {
+    private postagens: Postagem[] = [];
+
+    constructor(...postagens: Postagem[]) {
+        this.postagens.push(...postagens);
+    }
+
+    incluirPostagem(postagem: Postagem): void {
+        this.postagens.push(postagem);
+    }
+
+    excluirPostagem(id: number): void {
+        this.postagens = this.postagens.filter(postagem => postagem.id !== id);
+    }
+
+    postagemMaisCurtida(): Postagem | null {
+        if (this.postagens.length === 0) {
+            return null;
+        }
+
+        return this.postagens.reduce((maisCurtida, postagem) =>
+            postagem.quantidadeCurtidas > maisCurtida.quantidadeCurtidas ? postagem : maisCurtida
+        );
+    }
+
+    curtirPostagem(id: number): void {
+        const postagem = this.postagens.find(postagem => postagem.id === id);
+
+        if (postagem) {
+            postagem.curtir();
+        }
+    }
+
+    toString(): string {
+        return this.postagens.map(postagem => postagem.toString()).join('\n');
+    }
+}
+
+const postagem1 = new Postagem(1, "Primeira postagem");
+const postagem2 = new Postagem(2, "Segunda postagem");
+const postagem3 = new Postagem(3, "Terceira postagem");
+
+const microblog = new Microblog(postagem1, postagem2, postagem3);
+
+microblog.curtirPostagem(1);
+microblog.curtirPostagem(1);
+microblog.curtirPostagem(2);
+
+console.log(microblog.toString());
+
+microblog.excluirPostagem(2);
+
+console.log("Após a exclusão:");
+console.log(microblog.toString());
+
+const maisCurtida = microblog.postagemMaisCurtida();
+console.log(`Postagem mais curtida: ${maisCurtida ? maisCurtida.toString() : "Nenhuma postagem"}`);
+
+questão 3)
+
+import prompt from "prompt-sync";
+import { Conta, Banco } from "./banco";
+
+const input = prompt();
+const banco = new Banco();
+let opcao: string = '';
+
+do {
+    console.log('\nBem-vindo\nDigite uma opção:');
+    console.log('1 - Cadastrar 2 - Consultar 3 - Sacar\n' +
+        '4 - Depositar 5 - Excluir 6 - Transferir\n' +
+        '7 - Totalizações\n' +
+        '0 - Sair\n');
+    opcao = input("Opção:");
+
+    switch (opcao) {
+        case "1":
+            cadastrar();
+            break;
+        case "2":
+            consultar();
+            break;
+        // Implemente os demais casos do switch conforme necessário.
+    }
+
+    input("Operação finalizada. Digite <enter>");
+} while (opcao !== "0");
+
+console.log("Aplicação encerrada");
+
+function cadastrar(): void {
+    console.log("\nCadastrar conta\n");
+    const numero: string = input('Digite o número da conta:');
+    const saldo: number = parseFloat(input('Digite o saldo inicial:'));
+    const conta: Conta = new Conta(numero, saldo);
+    banco.inserir(conta);
+}
+
+function consultar(): void {
+    const numero: string = input('Digite o número da conta a ser consultada:');
+    const conta = banco.consultar(numero);
+
+    if (conta) {
+        console.log(`Conta: ${conta.numero}, Saldo: ${conta.saldo}`);
+    } else {
+        console.log('Conta não encontrada.');
+    }
+}
+
