@@ -56,3 +56,121 @@ class Hora{
 }
 let hora: Hora = new Hora(7, 10, 9);
 console.log(hora)
+
+Questão 3)
+
+class Banco {
+    private contas: Conta[] = [];
+
+    private consultarPorIndice(numero: string): number {
+        let indiceProcurado: number = -1;
+
+        for (let i: number = 0; i < this.contas.length; i++) {
+            if (this.contas[i].numero === numero) {
+                indiceProcurado = i;
+                break;
+            }
+        }
+
+        return indiceProcurado;
+    }
+
+    public inserir(conta: Conta): void {
+        this.contas.push(conta);
+    }
+
+    public consultar(numero: string): Conta | null {
+        const indiceProcurado: number = this.consultarPorIndice(numero);
+
+        if (indiceProcurado !== -1) {
+            return this.contas[indiceProcurado];
+        }
+
+        return null;
+    }
+
+    public alterar(conta: Conta): void {
+        const indiceProcurado: number = this.consultarPorIndice(conta.numero);
+
+        if (indiceProcurado !== -1) {
+            this.contas[indiceProcurado] = conta;
+        }
+    }
+
+    public excluir(numero: string): void {
+        const indiceProcurado: number = this.consultarPorIndice(numero);
+
+        if (indiceProcurado !== -1) {
+            this.contas.splice(indiceProcurado, 1);
+        }
+    }
+
+    public sacar(numero: string, valor: number): void {
+        const indiceProcurado: number = this.consultarPorIndice(numero);
+
+        if (indiceProcurado !== -1) {
+            const conta: Conta = this.contas[indiceProcurado];
+            conta.sacar(valor);
+        }
+    }
+}
+
+Questão 4)
+
+class Conta {
+    private numero: string;
+    private nome: string;
+    private saldo: number;
+
+    constructor(numero: string, nome: string, saldo: number) {
+        this.numero = numero;
+        this.nome = nome;
+        this.saldo = saldo;
+    }
+
+    public getNumero(): string {
+        return this.numero;
+    }
+
+    public getNome(): string {
+        return this.nome;
+    }
+
+    public getSaldo(): number {
+        return this.saldo;
+    }
+
+    sacar(valor: number): void {
+        if (valor <= 0) {
+            console.log("O valor do saque deve ser maior que zero.");
+            return;
+        }
+
+        if (valor > this.saldo) {
+            console.log("Saldo insuficiente.");
+            return;
+        }
+
+        this.saldo -= valor;
+        console.log(`Saque de ${valor} realizado. Novo saldo: ${this.saldo}`);
+    }
+
+    depositar(valor: number): void {
+        if (valor <= 0) {
+            console.log("O valor do depósito deve ser maior que zero.");
+            return;
+        }
+
+        this.saldo += valor;
+        console.log(`Depósito de ${valor} realizado. Novo saldo: ${this.saldo}`);
+    }
+
+    consultarSaldo(): number {
+        return this.saldo;
+    }
+}
+
+let conta: Conta = new Conta("11111-2", "ely", 100);
+console.log(conta.getNumero()); 
+console.log(conta.getNome()); 
+console.log(conta.getSaldo());
