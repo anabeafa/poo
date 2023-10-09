@@ -1,0 +1,58 @@
+Questão 1)
+class Calculadora{
+    private operando1: number;
+    private operando2: number;
+    constructor(operando1: number, operando2: number){
+        this.operando1 = operando1;
+        this.operando2 = operando2;
+    }
+
+    public adicionar(): number{
+        return this.operando1 + this.operando2;
+    }
+
+    public subtrair(): number{
+        return this.operando1 - this.operando2;
+    }
+}
+
+let calculadora: Calculadora = new Calculadora(2,3);
+
+console.log(calculadora.adicionar());
+console.log(calculadora.subtrair())
+
+Questão 2)
+class Hora{
+    private hora: number;
+    private minutos: number;
+    private segundos: number;
+
+    constructor(hora: number, minutos:number, segundos:number){
+        this.hora = hora;
+        this.minutos = minutos;
+        this.segundos = segundos;
+    }
+
+    Horas(): number{
+        return this.hora;
+    }
+    Minutos(): number{
+        return this.minutos;
+    }
+
+
+    Segundos(): number{
+        return this.segundos;
+
+}
+    public exibirHora(): void{
+        let horaStr = (this.Horas + "").padStart(2, "0");
+        let minutoStr = (this.Minutos + "").padStart(2, "0");
+        let segundoStr = (this.Segundos + "").padStart(2, "0");
+
+        console.log ('${horaStr}: ${minutoStr}: ${segundoStr}')
+    }
+
+}
+let hora: Hora = new Hora(7, 10, 9);
+console.log(hora)
