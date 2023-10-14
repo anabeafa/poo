@@ -1,0 +1,67 @@
+questão 1)
+class Veiculo {
+    placa: string;
+    ano: number;
+
+    constructor(placa: string, ano: number) {
+        this.placa = placa;
+        this.ano = ano;
+    }
+}
+
+class Carro extends Veiculo {
+    modelo: string;
+
+    constructor(placa: string, ano: number, modelo: string) {
+        super(placa, ano);
+        this.modelo = modelo;
+    }
+}
+
+class CarroEletrico extends Veiculo {
+    modelo: String;
+    autonomiaBateria: number;
+
+    constructor(placa: string, ano: number, modelo: String, autonomiaBateria: number) {
+        super(placa, ano);
+        this.modelo = modelo;
+        this.autonomiaBateria = autonomiaBateria;
+    }
+}
+questão 2)
+class Calculadora{
+    private operando1 : number;
+    private operando2 : number;
+    constructor( operando1:number,  operando2:number){
+        this.operando1 = operando1;
+        this.operando2 = operando2;
+    }
+    somar(): number{
+        return this.operando1 + this.operando2;
+    }
+}
+let calculadora : Calculadora = new Calculadora(5,5);
+console.log(calculadora.somar())
+
+questão 3)
+class Calculador {
+    private operando1: number;
+    private operando2: number;
+
+    constructor(operando1: number, operando2: number) {
+        this.operando1 = operando1;
+        this.operando2 = operando2;
+    }
+    calcularpotencia(): number {
+        return Math.pow(this.operando1, this.operando2);
+    }
+}
+
+class Calcientifica extends Calculador {
+    constructor(operando1: number, operando2: number) {
+        super(operando1, operando2);
+    }
+}
+
+let calculador: Calcientifica = new Calcientifica(5, 5); 
+console.log(calculador.calcularpotencia()); 
