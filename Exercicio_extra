@@ -1,0 +1,191 @@
+Questão 1)
+class Empregado {
+    salario: number = 500;
+    calcularSalario(): number {
+        return this.salario;
+    }
+}
+
+class Diarista extends Empregado {
+    calcularSalario(): number {
+        return super.calcularSalario() / 30;
+    }
+}
+
+class Horista extends Diarista {
+    calcularSalario(): number {
+        return super.calcularSalario() / 24;
+    }
+}
+const empregado = new Empregado();
+const diarista = new Diarista();
+const horista = new Horista();
+
+console.log("Salário do Empregado: " + empregado.calcularSalario()); 
+console.log("Salário da Diarista: " + diarista.calcularSalario());  
+console.log("Salário do Horista: " + horista.calcularSalario()); 
+
+Questão 2)
+class Pessoa {
+    private _nome: string;
+    private _sobrenome: string;
+
+    constructor(nome: string, sobrenome: string) {
+        this._nome = nome;
+        this._sobrenome = sobrenome;
+    }
+
+    get nome(): string {
+        return this._nome;
+    }
+
+    get sobrenome(): string {
+        return this._sobrenome;
+    }
+
+    get nomeCompleto(): string {
+        return `${this._nome} ${this._sobrenome}`;
+    }
+}
+
+const pessoa = new Pessoa("Ana", "Farias");
+console.log("Nome: " + pessoa.nome); 
+console.log("Sobrenome: " + pessoa.sobrenome); 
+console.log("Nome Completo: " + pessoa.nomeCompleto); 
+
+Questão 3)
+class Pessoa {
+    private _nome: string;
+    private _sobrenome: string;
+
+    constructor(nome: string, sobrenome: string) {
+        this._nome = nome;
+        this._sobrenome = sobrenome;
+    }
+
+    get nome(): string {
+        return this._nome;
+    }
+
+    get sobrenome(): string {
+        return this._sobrenome;
+    }
+
+    get nomeCompleto(): string {
+        return `${this._nome} ${this._sobrenome}`;
+    }
+}
+
+class Funcionario extends Pessoa {
+    private _matricula: string;
+    private _salario: number;
+
+    constructor(nome: string, sobrenome: string, matricula: string, salario: number) {
+        super(nome, sobrenome);
+        this._matricula = matricula;
+        this._salario = salario >= 0 ? salario : 0;
+    }
+
+    get matricula(): string {
+        return this._matricula;
+    }
+
+    get salario(): number {
+        return this._salario;
+    }
+
+    calcularSalarioPrimeiraParcela(): number {
+        return this._salario * 0.6; 
+    }
+
+    calcularSalarioSegundaParcela(): number {
+        return this._salario * 0.4; 
+    }
+}
+
+const funcionario = new Funcionario("Ana", "Farias", "48282", 5000);
+console.log("Nome: " + funcionario.nomeCompleto);
+console.log("Matrícula: " + funcionario.matricula);
+console.log("Salário: " + funcionario.salario);
+console.log("Primeira Parcela: " + funcionario.calcularSalarioPrimeiraParcela());
+console.log("Segunda Parcela: " + funcionario.calcularSalarioSegundaParcela());
+
+Questão 4)
+class Pessoa {
+    private _nome: string;
+    private _sobrenome: string;
+
+    constructor(nome: string, sobrenome: string) {
+        this._nome = nome;
+        this._sobrenome = sobrenome;
+    }
+
+    get nome(): string {
+        return this._nome;
+    }
+
+    get sobrenome(): string {
+        return this._sobrenome;
+    }
+
+    get nomeCompleto(): string {
+        return `${this._nome} ${this._sobrenome}`;
+    }
+}
+
+class Funcionario extends Pessoa {
+    private _matricula: string;
+    private _salario: number;
+
+    constructor(nome: string, sobrenome: string, matricula: string, salario: number) {
+        super(nome, sobrenome);
+        this._matricula = matricula;
+        this._salario = salario >= 0 ? salario : 0;
+    }
+
+    get matricula(): string {
+        return this._matricula;
+    }
+
+    get salario(): number {
+        return this._salario;
+    }
+
+    calcularSalarioPrimeiraParcela(): number {
+        return this._salario * 0.6; 
+    }
+
+    calcularSalarioSegundaParcela(): number {
+        return this._salario * 0.4; 
+    }
+}
+
+class Professor extends Funcionario {
+    private _titulacao: string;
+
+    constructor(nome: string, sobrenome: string, matricula: string, salario: number, titulacao: string) {
+        super(nome, sobrenome, matricula, salario);
+        this._titulacao = titulacao;
+    }
+
+    get titulacao(): string {
+        return this._titulacao;
+    }
+
+    calcularSalarioPrimeiraParcela(): number {
+        return this.salario;
+    }
+
+    calcularSalarioSegundaParcela(): number {
+        return 0;
+    }
+}
+
+const professor = new Professor("Joana", "Lima", "54932", 6000, "Doutor");
+console.log("Nome: " + professor.nomeCompleto);
+console.log("Matrícula: " + professor.matricula);
+console.log("Salário: " + professor.salario);
+console.log("Titulação: " + professor.titulacao);
+console.log("Primeira Parcela: " + professor.calcularSalarioPrimeiraParcela());
+console.log("Segunda Parcela: " + professor.calcularSalarioSegundaParcela());
+
