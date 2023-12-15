@@ -36,3 +36,20 @@ retangulo.l1 = 10;
 retangulo.l2 = 20;
 console.log(retangulo.calcularArea());
 console.log(retangulo.calcularPerimetro());
+
+---------------------------------------
+class Situacao_financeira{
+    valorCredito: number = 0;
+    valorDebito: number = 0;
+    
+    Saldo(): number {
+    return (this.valorDebito - this.valorCredito);
+  }
+  
+}
+let situacao: Situacao_financeira;
+situacao = new Situacao_financeira();
+situacao.valorCredito = 500;
+situacao.valorDebito = 1005;
+console.log(situacao.Saldo());
+
