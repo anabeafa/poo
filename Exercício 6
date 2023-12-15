@@ -1,4 +1,5 @@
 Questão 1)
+
 class Calculadora{
     private operando1: number;
     private operando2: number;
