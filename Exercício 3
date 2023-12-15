@@ -1,0 +1,31 @@
+-------------------------- Primeira ---------------------------------
+function Par_Impar(numero: number): boolean {
+    return numero % 2 === 0;
+}
+console.log(Par_Impar(8));
+console.log(Par_Impar(3));
+
+------------------------Segunda -----------------------------------
+function Primo(numero: number): boolean {
+    if (numero <= 1) {
+        return false;
+    }
+    for (let i = 2; i * i <= numero; i++) {
+        if (numero % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+console.log(Primo(7));   
+console.log(Primo(4));  
+console.log(Primo(19));
+
+--------------------------Terceira-------------------------------------
+function saudacao(nome: string, pronomeTratamento: string = "Sr"): string {
+    return `S${pronomeTratamento === "Sra" ? "ra" : "r"}. ${nome}`;
+}
+console.log(saudacao("Sávia", "Sra"));
+console.log(saudacao("João"));
+
+-------------------------Quarta ---------------------------------------
