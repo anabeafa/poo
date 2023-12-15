@@ -29,3 +29,38 @@ console.log(saudacao("Sávia", "Sra"));
 console.log(saudacao("João"));
 
 -------------------------Quarta ---------------------------------------
+const formatarNumeros = (arr: number[]): string => {
+    let resultado = "";
+    arr.forEach((numero, index) => {
+        resultado += numero.toString();
+        if (index !== arr.length - 1) {
+            resultado += "-";
+        }
+    });
+    return resultado;
+};
+const numeros = [1, 2, 3, 4, 5];
+const resultadoFormatado = formatarNumeros(numeros);
+console.log(resultadoFormatado);
+
+----------------------------Quinta -------------------------------
+function soma(x, y) {
+    return x + y;
+}
+console.log(soma(1, 2));
+console.log(soma(1, "2"));
+console.log(soma(1));
+
+---------------------------- Sexta -------------------------------
+const exibir = (...strings: string[]): void => {
+    strings.forEach((str) => {
+        console.log(str);
+    });
+};
+exibir("a", "b");
+exibir("a", "b", "c");
+exibir("a", "b", "c", "d");
+--------------------------- Sétima ----------------------------------
+const ola = () => console.log("Olá");
+ola();
+
