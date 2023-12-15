@@ -1,4 +1,4 @@
------- ÁREA/ PERÍMETRO TRIÂNGULO ------
+------ ÁREA/ PERÍMETRO CÍRCULO ------
 class Circulo{
     raio: number = 0;
 
@@ -16,4 +16,23 @@ circulo.raio = 7;
 console.log(circulo.calcularArea());
 console.log(circulo.calcularPerimetro());
 
--------  --------
+------- ÁREA/ PERIMETRO RETÂNGULO --------
+
+class Retangulo {
+    l1: number = 0;
+    l2: number = 0;
+  
+    calcularArea(): number {
+      return this.l1 * this.l2;
+    }
+    calcularPerimetro(): number{
+      return (this.l1 * 2) + (this.l2 * 2)
+    }
+  }
+  
+let retangulo: Retangulo;
+retangulo = new Retangulo();
+retangulo.l1 = 10;
+retangulo.l2 = 20;
+console.log(retangulo.calcularArea());
+console.log(retangulo.calcularPerimetro());
